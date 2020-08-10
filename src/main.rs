@@ -7,7 +7,9 @@ fn main() -> io::Result<()> {
     let script = args.next();
     match script {
         Some(script) => interpret(script.as_ref(), args),
-        None         => Ok(println!("No script!")),
+        None         => {
+            Err(std::io::Error::new(std::io::ErrorKind::Other, "No script file provided!"))
+        }
     }
 }
 
@@ -48,6 +50,5 @@ fn interpret<T>(script : &std::path::Path, args : T) -> io::Result<()>
             }
         }
     }
-    std::process::Command::new("/bin/sh").arg("-c").arg(sh).arg(script).args(args).exec();
-    Ok(())
+    Err(std::process::Command::new("/bin/sh").arg("-c").arg(sh).arg(script).args(args).exec())
 }
