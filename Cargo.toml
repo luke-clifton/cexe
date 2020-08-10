@@ -3,5 +3,10 @@ name = "cexe"
 version = "0.1.0"
 authors = ["Luke Clifton <lukec@themk.net>"]
 edition = "2018"
+description = "A generic #! interpreter"
+readme = "README.md"
+homepage = "https://github.com/luke-clifton/cexe"
+repository = "https://github.com/luke-clifton/cexe"
+license = "BSD-2-Clause"
 
 [dependencies]
